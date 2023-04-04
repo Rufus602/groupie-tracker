@@ -5,9 +5,9 @@ import (
 	"os"
 )
 
-type application struct {
-	errorLog *log.Logger
-	infoLog  *log.Logger
+type Application struct {
+	ErrorLog *log.Logger
+	InfoLog  *log.Logger
 }
 
 func LoggerCreater() (*log.Logger, *log.Logger) {

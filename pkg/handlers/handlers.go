@@ -8,7 +8,7 @@ import (
 
 var API []structure.Artist
 
-func (app *application) home(w http.ResponseWriter, r *http.Request) {
+func (app *Application) home(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
 		app.notFound(w)
 		return
@@ -24,7 +24,7 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 	//s, err:=
 }
 
-func (app *application) artist(w http.ResponseWriter, r *http.Request) {
+func (app *Application) artist(w http.ResponseWriter, r *http.Request) {
 	id, err := strconv.Atoi(r.URL.Query().Get("id"))
 	if err != nil || (id < 1 && id > 52) {
 		app.notFound(w)
