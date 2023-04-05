@@ -1,0 +1,54 @@
+{{define "artPage"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Name}}</title>
+    <link rel="stylesheet" href="../static/styleArt.css">
+</head>
+<body>
+    <a href="/">
+        Groupie Tracker
+    </a> 
+    
+    <h2>{{.Name}}</h2>
+<div class="wrapper">
+  <input class="radio" id="one" name="group" type="radio" checked>
+  <input class="radio" id="two" name="group" type="radio">
+  <input class="radio" id="three" name="group" type="radio">
+  <div class="tabs">
+  <label class="tab" id="one-tab" for="one">Group</label>
+  <label class="tab" id="two-tab" for="two">Members</label>
+  <label class="tab" id="three-tab" for="three">Concerts</label>
+    </div>
+  <div class="panels">
+  <div class="panel" id="one-panel">
+    <div class="panel-title">{{.Name}}</div>
+    <img src="{{.Image}}" alt="{{.Image}}"  />
+    <p>Creation date: {{.CreationDate}}</p>
+    <p>First Album:: {{.FirstAlbum}}</p>
+  </div>
+  <div class="panel" id="two-panel">
+    <div class="panel-title">Members:</div>
+    {{ range $member:= .Members}}
+    <p class="member">  
+         {{$member}}
+    </p>
+    {{end}}
+  </div>
+  <div class="panel" id="three-panel">
+    <div class="panel-title">Concert Dates:</div>
+    {{ range $concert, $dates:= .Concerts}}
+                <p class="location">{{$concert}}</p>
+                {{range $date:=$dates}}
+                <p>{{$date}}</p>
+                {{end}}
+            {{end}}
+  </div>
+  </div>
+</div>
+</body>
+</html>
+{{end}}

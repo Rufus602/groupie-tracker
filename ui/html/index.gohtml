@@ -1,0 +1,42 @@
+{{define "index"}}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Groupie tracker</title>
+    <link rel="stylesheet" href="../static/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>GROUPIE TRACKER</h1>
+    </header>
+    <div class="container">
+      {{range .}}
+
+      <ul class="cards">
+        <li>
+          <a href="/artist?id={{ .ID}}" class="card">
+            <img src="{{.Image}}" alt="{{.Image}}" class="card__image" />
+            <div class="card__overlay">
+              <div class="card__header">
+                <!-- <div class="card__header-text"> -->
+                <h3 class="card__title">{{.Name}}</h3>
+                <!-- <a href="/artist/ID={{ .ID}}" >{{.Name}}</a> -->
+                <!-- </div> -->
+              </div>
+              <p class="card__description">
+                Date of creation: {{.CreationDate}}
+              </p>
+            </div>
+            <div class="images"></div>
+          </a>
+        </li>
+      </ul>
+      {{end}}
+    </div>
+  </body>
+</html>
+
+{{end}}

@@ -13,7 +13,7 @@ func (app *Application) serverError(w http.ResponseWriter, err error) {
 	http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 }
 
-// Помощник clientError отправляет определенный код состояния и соответствующее описание
+// Помощник clientError отправляет определенный код состояния и соответствующее ее описание
 // пользователю. Мы будем использовать это в следующий уроках, чтобы отправлять ответы вроде 400 "Bad
 // Request", когда есть проблема с пользовательским запросом.
 func (app *Application) clientError(w http.ResponseWriter, status int) {
