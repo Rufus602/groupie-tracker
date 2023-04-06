@@ -4,12 +4,16 @@ import (
 	"net/http"
 )
 
-func (app *Application) Routes() *http.ServeMux {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/", app.home)
-	mux.HandleFunc("/artists", app.artist)
+func New() *http.ServeMux {
+	return http.NewServeMux()
+}
 
-	//fileServer := http.FileServer(http.Dir("./ui/static/"))
-	//mux.Handle("/static/", http.StripPrefix("/static", fileServer))
-	return mux
+func (app *Application) Routes() *http.ServeMux {
+
+	app.HTTP.HandleFunc("/", app.home)
+	app.HTTP.HandleFunc("/artist", app.artist)
+
+	fileServer := http.FileServer(http.Dir("./ui/static/"))
+	app.HTTP.Handle("/static/", http.StripPrefix("/static", fileServer))
+	return app.HTTP
 }

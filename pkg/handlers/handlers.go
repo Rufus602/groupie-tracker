@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"fmt"
 	"groupie_tracker/pkg/structure"
 	"html/template"
 	"log"
@@ -19,13 +20,11 @@ func (app *Application) home(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Allow", http.MethodGet)
 		app.clientError(w, http.StatusMethodNotAllowed)
 	}
-	//Api = Jsongiver(app, w)
-	//Information := Api()
 	Information, err := structure.JsonReader()
 	if err != nil {
 		app.serverError(w, err)
 	}
-	temp, err := template.ParseFiles("./ui/html/index.gohtml")
+	temp, err := template.ParseFiles("./ui/html/index.html")
 	if err != nil {
 
 		return
@@ -39,11 +38,15 @@ func (app *Application) home(w http.ResponseWriter, r *http.Request) {
 
 func (app *Application) artist(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path == "/artist/" {
+		fmt.Println("no here")
+
 		app.notFound(w)
 		return
 	}
 	id, err := strconv.Atoi(r.URL.Query().Get("id"))
 	if err != nil || (id < 1 && id > 52) {
+
+		fmt.Println("here")
 		app.notFound(w)
 		return
 	}

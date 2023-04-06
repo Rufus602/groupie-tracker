@@ -1,27 +1,41 @@
 package structure
 
-type Artist struct {
-	Id           int       `json:"id,omitempty"`
-	Image        string    `json:"image,omitempty"`
-	Name         string    `json:"name,omitempty"`
-	Members      []string  `json:"members,omitempty"`
-	CreationDate int       `json:"creationDate,omitempty"`
-	FirstAlbum   string    `json:"firstAlbum,omitempty"`
-	Locations    Locations `json:"-"`
-	ConcertDates Dates     `json:"-"`
-	Concerts     Relation  `json:"-"`
+type Artists struct {
+	ID           int      `json:"id"`
+	Image        string   `json:"image"`
+	Name         string   `json:"name"`
+	Members      []string `json:"members"`
+	CreationDate int      `json:"creationDate"`
+	FirstAlbum   string   `json:"firstAlbum"`
+	Locations    Locations
+	ConcertDates ConcertDates
+	Relations    Relations
+}
+
+type IndexRel struct {
+	IndexRel []Relations `json:"index"`
+}
+
+type IndexLoc struct {
+	IndexLoc []Locations `json:"index"`
+}
+
+type IndexDates struct {
+	IndexDates []ConcertDates `json:"index"`
+}
+
+type Relations struct {
+	Id        int                 `json:"id"`
+	Relations map[string][]string `json:"datesLocations"`
 }
 
 type Locations struct {
-	Id        int      `json:"id,omitempty"`
-	Locations []string `json:"locations,omitempty"`
+	Id           int      `json:"id"`
+	Locations    []string `json:"locations"`
+	ConcertDates ConcertDates
 }
 
-type Dates struct {
-	Id    int      `json:"id,omitempty"`
-	Dates []string `json:"dates,omitempty"`
-}
-type Relation struct {
-	Id             int                 `json:"id,omitempty"`
-	DatesLocations map[string][]string `json:"datesLocations,omitempty"`
+type ConcertDates struct {
+	Id           int      `json:"id"`
+	ConcertDates []string `json:"dates"`
 }

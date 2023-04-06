@@ -24,4 +24,5 @@ func (app *Application) clientError(w http.ResponseWriter, status int) {
 // удобная оболочка вокруг clientError, которая отправляет пользователю ответ "404 Страница не найдена".
 func (app *Application) notFound(w http.ResponseWriter) {
 	app.clientError(w, http.StatusNotFound)
+
 }

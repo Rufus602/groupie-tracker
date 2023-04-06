@@ -13,6 +13,7 @@ func main() {
 	app := &handlers.Application{
 		ErrorLog: errorLog,
 		InfoLog:  infoLog,
+		HTTP:     handlers.New(),
 	}
 	srv := &http.Server{
 		Addr:     *addr,

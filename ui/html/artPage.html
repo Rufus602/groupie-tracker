@@ -40,7 +40,7 @@
   </div>
   <div class="panel" id="three-panel">
     <div class="panel-title">Concert Dates:</div>
-    {{ range $concert, $dates:= .Concerts}}
+    {{ range $concert, $dates:= .Relations.Relations}}
                 <p class="location">{{$concert}}</p>
                 {{range $date:=$dates}}
                 <p>{{$date}}</p>

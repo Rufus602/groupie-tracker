@@ -36,7 +36,7 @@ h2{
   text-align:center;
   font-size:2em;
 }
-.warapper{
+.wrapper{
   display:flex;
   flex-direction: column;
   align-items: center;
@@ -59,7 +59,7 @@ h2{
   max-width:500px;
   border-radius:20px;
   overflow:hidden;
-  padding:20px;  
+  padding:20px;
 }
 .panel{
   display:none;
