@@ -5,6 +5,7 @@ body{
     font-family: 'Arimo', sans-serif;
     background-size: 400% 400%;
     height: 100%;
+
 }
 
 @keyframes gradient {
@@ -39,7 +40,7 @@ h2{
 .wrapper{
   display:flex;
   flex-direction: column;
-  align-items: center;
+    align-items: center;
 }
 .tab{
   cursor: pointer;
